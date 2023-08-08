@@ -10,6 +10,72 @@
 </head>
 
 <body>
+    <div class="">
+        <!-- ===== Header Start ===== -->
+        <header>
+        </header>
+        <!-- ===== Header End ===== -->
+        <!-- ===== Main Content Start ===== -->
+        <main>
+            <div class="mx-auto min-h-screen max-w-screen-lg">
+                <include src="./pages/createClient.html" />
+                <button class="bg-sky-500 p-2 rounded border m-2 text-white" id="openModal">Agregar cliente</button>
+                <section id="content">
+                    <div class="flex flex-col mx-2 ">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-4 gap-4 ">
+                            <div class="flex items-start p-4 rounded-xl shadow-lg bg-white">
+                                <div
+                                    class="flex items-center justify-center bg-red-50 h-12 w-12 rounded-full border border-red-100">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-400" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                    </svg>
+                                </div>
+                                <div class="ml-4">
+                                    <h2 class="font-semibold" id="averageAges"></h2>
+                                    <p class=" text-sm text-gray-500">Promedio de edad</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start p-4 rounded-xl shadow-lg bg-white">
+                                <div
+                                    class="flex items-center justify-center bg-orange-50 h-12 w-12 rounded-full border border-orange-100">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-400" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                    </svg>
+                                </div>
+                                <div class="ml-4">
+                                    <h2 class="font-semibold" id="deviation"></h2>
+                                    <p class=" text-sm text-gray-500">Desviación estandar</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h1 class="text-2xl text-center font-bold my-5">Lista de clientes</h1>
+                    <div id="clientList"
+                        class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5 mx-2">
+                    </div>
+                </section>
+                <section id="formAddClient"
+                    class="w-full absolute top-0 h-screen flex items-center justify-center bg-black/[0.6]">
+                    <form id="addClient" class="bg-white m-2 p-5 border rounded-lg flex flex-col relative">
+                        <p id="closeModal" class="absolute top-0 right-2">X</p>
+                        <input class="border rounded p-1 mb-1" type="text" name="firstName" id="firstName"
+                            placeholder="Nombre">
+                        <input class="border rounded p-1 mb-1" type="text" name="lastName" id="lastName"
+                            placeholder="Apellido">
+                        <input class="border rounded p-1 mb-1" type="number" name="age" id="age" placeholder="Edad">
+                        <input class="border rounded p-1 mb-1" type="date" name="birthday" id="birthday"
+                            placeholder="Fecha de nacimiento">
+                        <button type="submit">Crear cliente</button>
+                    </form>
+                </section>
+                <!-- <footer class=" flex items-center justify-center">Footer</footer> -->
+            </div>
+        </main>
+    </div>
 </body>
 <!-- Scripts Custom -->
 <script type="module" src="./scripts/index.js"></script>
