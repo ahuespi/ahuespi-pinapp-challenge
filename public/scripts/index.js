@@ -9,8 +9,10 @@ const getClients = async () => {
 
     // Muestro la lista de clientes
     clients.forEach((client) => {
+        // Muestro la fecha probable de defunsion
+        const deadDate = calculateDeadDate(client.birthday)
         $('#clientList').append(`
-            <div class="shadow-xl border rounded px-5 py-10 mt-2 client__user flex">
+            <div class="shadow-xl border rounded px-5 py-10 mt-2 client__user flex ">
                 <div class="flex items-center justify-center bg-orange-50 h-12 w-12 rounded-full border border-orange-100">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-400" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -20,7 +22,8 @@ const getClients = async () => {
                 </div>
                 <div class="pl-5">
                     <h5 class="font-bold text-xl">${client.firstName} ${client.lastName}</h5>
-                    <p >Nacimiento: ${client.birthday} (${client.age} años)</p>
+                    <p class="text-xs text-gray-400" >Nacimiento: ${client.birthday} (${client.age} años)</p>
+                    <p class="text-xs text-gray-400">Año est. de defunsion: ${deadDate} </p>
                 </div>
                 
             </div>            
@@ -38,6 +41,8 @@ const getClients = async () => {
     // Muestro la desviación
     const deviation = calculateDeviation(allAges, averageAges)
     $('#deviation').html(`${deviation}`)
+
+
 }
 
 // Calculo el promedio de edad
@@ -63,6 +68,16 @@ const calculateDeviation = (ages, average) => {
     return standarDeviation.toFixed(2);
 }
 
+// Calculo fecha problable de muerte
+
+const calculateDeadDate = (birthday) => {
+    const esperanzaDeVida = 75
+    const year = parseInt(birthday.slice(0, 4));
+    return year + esperanzaDeVida
+
+
+}
+
 $('#openModal').on('click', () => {
     $('#formAddClient').fadeIn(250)
     $('#sendButton').html('Crear cliente')
@@ -80,6 +95,7 @@ const addClient = (e) => {
     e.preventDefault();
     $('#sendButton').attr('disabled', 'disabled')
     $('#sendButton').html('Creando...')
+
     const firstName = $('#firstName').val();
     const lastName = $('#lastName').val();
     const age = $('#age').val();
