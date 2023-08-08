@@ -18,8 +18,10 @@
         <!-- ===== Main Content Start ===== -->
         <main>
             <div class="mx-auto min-h-screen max-w-screen-lg">
-                <include src="./pages/createClient.html" />
-                <button class="bg-sky-500 p-2 rounded border m-2 text-white" id="openModal">Agregar cliente</button>
+                <nav class="flex justify-between mx-2 items-center border-b">
+                    <p class="font-semibold pl-2">AHUESPI - Pinapp Challenge</p>
+                    <button class="bg-sky-500 p-2 rounded border m-2 text-white" id="openModal">Agregar cliente</button>
+                </nav>
                 <section id="content">
                     <div class="flex flex-col mx-2 ">
                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-4 gap-4 ">
@@ -60,16 +62,29 @@
                 </section>
                 <section id="formAddClient"
                     class="w-full absolute top-0 h-screen flex items-center justify-center bg-black/[0.6]">
-                    <form id="addClient" class="bg-white m-2 p-5 border rounded-lg flex flex-col relative">
-                        <p id="closeModal" class="absolute top-0 right-2">X</p>
-                        <input class="border rounded p-1 mb-1" type="text" name="firstName" id="firstName"
-                            placeholder="Nombre">
-                        <input class="border rounded p-1 mb-1" type="text" name="lastName" id="lastName"
-                            placeholder="Apellido">
-                        <input class="border rounded p-1 mb-1" type="number" name="age" id="age" placeholder="Edad">
-                        <input class="border rounded p-1 mb-1" type="date" name="birthday" id="birthday"
-                            placeholder="Fecha de nacimiento">
-                        <button type="submit">Crear cliente</button>
+                    <form id="addClient"
+                        class="w-full bg-white m-2 h-1/2 justify-between px-5 py-10 border rounded-lg flex flex-col relative">
+                        <p id="closeModal" class="absolute top-2 right-3">X</p>
+                        <div class="flex flex-col">
+                            <label class="text-sm text-gray-500 p-0 m-0">Nombre</label>
+                            <input required class="border rounded p-1  mb-1" type="text" name="firstName"
+                                id="firstName">
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-sm text-gray-500 p-0 m-0">Apellido</label>
+                            <input required class="border rounded p-1 mb-1" type="text" name="lastName" id="lastName">
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-sm text-gray-500 p-0 m-0">Edad</label>
+                            <input required class="border rounded p-1 mb-1" type="number" name="age" id="age">
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-sm text-gray-500 p-0 m-0">Fecha de nacimiento</label>
+                            <input required class="border rounded p-1 mb-1" type="date" name="birthday" id="birthday">
+                        </div>
+                        <button id="sendButton" type="submit"
+                            class="border rounded p-2 bg-sky-500 text-white font-bold">Crear
+                            cliente</button>
                     </form>
                 </section>
                 <!-- <footer class=" flex items-center justify-center">Footer</footer> -->
