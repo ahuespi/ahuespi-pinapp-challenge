@@ -6,7 +6,6 @@ const getClients = async () => {
     const clients = getClients.docs.map((list) => list.data());
     const allAges = getClients.docs.map((client) => Number(client.data().age));
     $('.client__user').remove()
-
     // Muestro la lista de clientes
     clients.forEach((client) => {
         // Muestro la fecha probable de defunsion
@@ -41,56 +40,9 @@ const getClients = async () => {
     // Muestro la desviación
     const deviation = calculateDeviation(allAges, averageAges)
     $('#deviation').html(`${deviation}`)
-
-
 }
 
-// Calculo el promedio de edad
-const calculateAverage = (ages) => {
-    const averageCount = ages.reduce((prev, age) => prev + age, 0) / ages.length;
-    return averageCount.toFixed(2);
-}
-
-// Calculo la desviacion estandar
-const calculateDeviation = (ages, average) => {
-    const getNominator = ages.map((i) => {
-        const sumAges = i - average;
-        const powAges = Math.pow(sumAges, 2);
-
-        return powAges;
-    })
-
-    const sumNominatorValues = getNominator.reduce((prev, age) => prev + age, 0);
-    const getDenominator = ages.length - 1;
-
-    const standarDeviation = Math.sqrt(sumNominatorValues / getDenominator);
-
-    return standarDeviation.toFixed(2);
-}
-
-// Calculo fecha problable de muerte
-
-const calculateDeadDate = (birthday) => {
-    const esperanzaDeVida = 75
-    const year = parseInt(birthday.slice(0, 4));
-    return year + esperanzaDeVida
-
-
-}
-
-$('#openModal').on('click', () => {
-    $('#formAddClient').fadeIn(250)
-    $('#sendButton').html('Crear cliente')
-    $('#sendButton').css({
-        "color": 'white',
-        "font-weight": 'bold',
-        "background-color": "rgb(14 165 233 / 1)"
-    })
-})
-$('#closeModal').on('click', () => {
-    $('#formAddClient').fadeOut(250)
-})
-
+// Agrego un cliente a la DB
 const addClient = (e) => {
     e.preventDefault();
     $('#sendButton').attr('disabled', 'disabled')
@@ -125,6 +77,49 @@ const addClient = (e) => {
         console.log(e)
     }
 }
+
+// Calculo el promedio de edad
+const calculateAverage = (ages) => {
+    const averageValue = ages.reduce((prev, age) => prev + age, 0) / ages.length;
+    return averageValue.toFixed(2);
+}
+
+// Calculo la desviacion estandar
+const calculateDeviation = (ages, average) => {
+    const getNominator = ages.map((i) => {
+        const sumAges = i - average;
+        const powAges = Math.pow(sumAges, 2);
+
+        return powAges;
+    })
+
+    const sumNominatorValues = getNominator.reduce((prev, age) => prev + age, 0);
+    const getDenominator = ages.length - 1;
+    const deviation = Math.sqrt(sumNominatorValues / getDenominator);
+
+    return deviation.toFixed(2);
+}
+
+// Calculo fecha problable de muerte
+const calculateDeadDate = (birthday) => {
+    const lifeExpectancy = 75
+    const year = parseInt(birthday.slice(0, 4));
+    return year + lifeExpectancy
+}
+
+// Eventos
+$('#openModal').on('click', () => {
+    $('#formAddClient').fadeIn(250)
+    $('#sendButton').html('Crear cliente')
+    $('#sendButton').css({
+        "color": 'white',
+        "font-weight": 'bold',
+        "background-color": "rgb(14 165 233 / 1)"
+    })
+})
+$('#closeModal').on('click', () => {
+    $('#formAddClient').fadeOut(250)
+})
 
 $(document).ready(() => {
     $('#formAddClient').hide()
