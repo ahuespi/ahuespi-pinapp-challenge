@@ -62,15 +62,21 @@
                             años de vida, dato que se usa para calcular la fecha probable de muerte </p>
                         <div id="clientList"
                             class="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-6 xl:grid-cols-2 2xl:gap-7.5 mx-2">
+                            <div id="loading"
+                                class="mx-auto inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                                role="status">
+                                <span
+                                    class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Cargando...</span>
+                            </div>
                         </div>
                     </div>
                 </section>
                 <!-- Formulario de alta de cliente -->
                 <section id="formAddClient"
-                    class="w-full absolute top-0 md:left-0 h-screen flex items-center justify-center bg-black/[0.6]">
+                    class="w-full absolute top-0 md:left-0 h-screen flex items-center justify-center bg-black/[0.6] sm:hidden">
                     <form id="addClient"
                         class="w-full bg-white m-2 h-1/2 md:w-6/12 md:p-30 justify-between px-5 py-10 border rounded-lg flex flex-col relative">
-                        <p id="closeModal" class="absolute top-2 right-3">X</p>
+                        <p id="closeModal" class="absolute top-2 right-3 cursor-pointer">X</p>
                         <div class="flex flex-col">
                             <label class="text-sm text-gray-500 p-0 m-0">Nombre</label>
                             <input required class="border rounded p-1  mb-1" type="text" name="firstName"

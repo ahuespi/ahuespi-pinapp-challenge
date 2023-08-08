@@ -10,6 +10,7 @@ const getClients = async () => {
     clients.forEach((client) => {
         // Muestro la fecha probable de defunsion
         const deadDate = calculateDeadDate(client.birthday)
+        $('#loading').hide()
         $('#clientList').append(`
             <div class="shadow-xl border rounded px-5 py-10 mt-2 client__user flex ">
                 <div class="flex items-center justify-center bg-orange-50 h-12 w-12 rounded-full border border-orange-100">
@@ -110,6 +111,7 @@ const calculateDeadDate = (birthday) => {
 // Eventos
 $('#openModal').on('click', () => {
     $('#formAddClient').fadeIn(250)
+    $('#formAddClient').css('display', 'flex')
     $('#sendButton').html('Crear cliente')
     $('#sendButton').css({
         "color": 'white',
@@ -122,7 +124,6 @@ $('#closeModal').on('click', () => {
 })
 
 $(document).ready(() => {
-    $('#formAddClient').hide()
-    getClients()
     $('#addClient').on('submit', addClient);
+    getClients()
 })
